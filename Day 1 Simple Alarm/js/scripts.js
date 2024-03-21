@@ -57,14 +57,16 @@ setInterval(() =>{
 }, 1000);
 
 function setAlarm() {
-    if (isAlarmSet) {
-        alarmTime = "";
-        ringtone.pause();
+    if (isAlarmSet) { // if isAlarmSet true
+        alarmTime = ""; // Clear the value of alarmTime
+        ringtone.pause(); // Pause the ringtone
         content.classList.remove("disable");
         setAlarmBtn.innerText = "Set Alarm!";
-        return isAlarmSet = false; // 
+        return isAlarmSet = false; // return isAlarmSet value to false  
         
     }
+
+    // getting hour, minute, ampm select tag value
     let time = `${selectMenu[0].value}:${selectMenu[2].value}`;
     if (time.includes("Hour") || time.includes("Minute") || time.includes("AM/PM")) {
         return alert( "Please, Select a valid time to set Alarm!");
