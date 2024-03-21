@@ -3,6 +3,9 @@ content = document.querySelector(".content"),
 selectMenu = document.querySelectorAll("select"),
 setAlarmBtn = document.querySelector("button");
 
+let alarmTime, isAlarmSet = false,
+ringtone =   new Audio("../files/ringtone.mp3");
+
 for (let i = 12; i > 0; i--) {
     i = i<10 ? "0" + i : i;
     let option = `<option value="${i}">${i}</option>`;
@@ -46,13 +49,28 @@ setInterval(() =>{
 
     // displaying time on the website
     currentTime.innerText = (`${h}: ${m}: ${s} ${ampm}`);
+
+    if(alarmTime == `${h}:${m} ${ampm}`) {
+        ringtone.play();
+        ringtone.loop = true;
+    }
 }, 1000);
 
 function setAlarm() {
+    if (isAlarmSet) {
+        alarmTime = "";
+        ringtone.pause();
+        content.classList.remove("disable");
+        setAlarmBtn.innerText = "Set Alarm!";
+        return isAlarmSet = false; // 
+        
+    }
     let time = `${selectMenu[0].value}:${selectMenu[2].value}`;
     if (time.includes("Hour") || time.includes("Minute") || time.includes("AM/PM")) {
         return alert( "Please, Select a valid time to set Alarm!");
     }
+    isAlarmSet = true;
+    alarmTime = time;
     content.classList.add("disable");
     setAlarmBtn.innerText = "Clear Alarm!";
 }
