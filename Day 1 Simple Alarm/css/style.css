@@ -33,23 +33,16 @@ body{
 .wrapper .content{
     width: 100%;
     justify-content: space-between;
-}
-.content {
     display: flex;
-    outline: none;
-    border: none;
-    height: 53px;
-    width: 100%;
-    font-size: 19px;
 }
 
-.content .column{
+.content .colum{
     border-radius: 5px;
     padding: 0 10px;
     border: 1px solid #999;
     width: calc(100% / 3 -5px);
 }
-.column select{
+.colum select{
     outline: none;
     border: none;
     height: 53px;
