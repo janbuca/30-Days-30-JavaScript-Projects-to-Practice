@@ -35,6 +35,10 @@ body{
     justify-content: space-between;
     display: flex;
 }
+.wrapper .content.disable{
+    opacity: 0.6;
+    pointer-events: none;
+}
 
 .content .colum{
     border-radius: 5px;
