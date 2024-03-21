@@ -1,4 +1,5 @@
 const currentTime = document.querySelector("h1"),
+content = document.querySelector("content"),
 selectMenu = document.querySelectorAll("select"),
 setAlarmBtn = document.querySelector("button");
 
@@ -30,7 +31,7 @@ setInterval(() =>{
     s = date.getSeconds(),
     ampm = "AM";
 
-    if(h >= 0){
+    if(h >= 12){
         h = h - 12;
         ampm =   "PM";
     }
@@ -46,6 +47,14 @@ setInterval(() =>{
     // displaying time on the website
     currentTime.innerText = (`${h}: ${m}: ${s} ${ampm}`);
 }, 1000);
+
+function setAlarm() {
+    let time = `${selectMenu[0].value}:${selectMenu[2].value}`;
+    if (time.includes("Hour") || time.includes("Minute") || time.includes("AM/PM")) {
+        return alert( "Please, Select a valid time to set Alarm!");
+    }
+    console.log(time);
+}
 
 
 setAlarmBtn.addEventListener("click", setAlarm);
