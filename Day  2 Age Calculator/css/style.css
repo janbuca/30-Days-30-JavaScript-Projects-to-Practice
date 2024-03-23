@@ -9,7 +9,7 @@
     min-width: 100vh;
     /* background-color: linear-gradient(135deg, #662fbe, #90bafc); */
     background-color: #662fbe;
-    color: #fff;
+    color: #0f0e0e;
     padding: 10px;
 }
 .calculator{
@@ -23,7 +23,7 @@
 
 }
 .calculator h1 span{
-    color: #fff76f;
+    color: #fff;
 }
 .input_box{
     margin: 40px 0;
@@ -70,5 +70,5 @@
     font-size: 20px;
 }
 #result span{
-    color: #ffff76;
+    color: #edede2;
 }
