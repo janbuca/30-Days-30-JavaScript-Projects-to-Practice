@@ -29,7 +29,11 @@ const changeDirection = (e) =>{
 
 const initGame = () =>{
     let htmlMarkup = `<div class = "food" style = "grid-area: ${foodY} / ${foodX}"></div>`;
-     htmlMarkup = `<div class = "head" style = "grid-area: ${snakeY} / ${snakeX}"></div>`;
+
+    // updating the snake's head position base on the current velocity
+    snakeX += velocityX;
+    snakeY += velocityY;
+    htmlMarkup = `<div class = "head" style = "grid-area: ${snakeY} / ${snakeX}"></div>`;
     playBoard.innerHTML = htmlMarkup;
 };
 changeFoodPosition();
