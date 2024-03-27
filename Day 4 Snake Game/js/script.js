@@ -2,6 +2,7 @@ const playBoard = document.querySelector(".play_board");
 
 let foodX, foodY;
 let snakeX = 5, snakeY = 10;
+let snakeBody = [];
 let velocityX = 0, velocityY = 0;
 
 const changeFoodPosition = () =>{
@@ -25,11 +26,18 @@ const changeDirection = (e) =>{
         velocityX = 1;
         velocityY = 0;     
     }
+
+    
 };
 
 const initGame = () =>{
     let htmlMarkup = `<div class = "food" style = "grid-area: ${foodY} / ${foodX}"></div>`;
 
+    // Checking if the snake hit the food
+    if(snakeX ===  foodX && snakeY === foodY){
+        changeFoodPosition();
+        snakeBody.push([foodX, foodY]); //pushing food position to snake body array
+    }
     // updating the snake's head position base on the current velocity
     snakeX += velocityX;
     snakeY += velocityY;
@@ -37,6 +45,5 @@ const initGame = () =>{
     playBoard.innerHTML = htmlMarkup;
 };
 changeFoodPosition();
-initGame();
-
+setInterval(initGame, 125);
 document.addEventListener("keydown", changeDirection);
