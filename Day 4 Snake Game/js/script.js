@@ -1,5 +1,6 @@
 const playBoard = document.querySelector(".play_board");
 
+let gameOver = false;
 let foodX, foodY;
 let snakeX = 5, snakeY = 10;
 let snakeBody = [];
@@ -37,7 +38,6 @@ const initGame = () =>{
     if(snakeX ===  foodX && snakeY === foodY){
         changeFoodPosition();
         snakeBody.push([foodX, foodY]); //pushing food position to snake body array
-        console.log(snakeBody);
     }
     for (let i = snakeBody.length - i; i > 0; i--) {
         snakeBody[i] = snakeBody[i-1];   //shifting positions of elements in the snake's body
@@ -49,6 +49,11 @@ const initGame = () =>{
     // updating the snake's head position base on the current velocity
     snakeX += velocityX;
     snakeY += velocityY;
+
+    // 
+    if(snakeX <= 0 || snakeX > 30 || snakeY <= 0 || snakeY >30){
+        gameOver = true; //if snake hits the wall then game over
+    }
 
     for (let i = 0; i < snakeBody.length; i++) {
         // Adding a div for each part of the snake's body
