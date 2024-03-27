@@ -22,16 +22,16 @@ const handleGameOver = () =>{
 
 const changeDirection = (e) =>{
     // changing velocity value based on key press
-    if(e.key === "ArrowUp"){
+    if(e.key === "ArrowUp" && velocityY != 1){
         velocityX = 0;
         velocityY = -1;
-}else if(e.key === "ArrowDown"){
+}else if(e.key === "ArrowDown" && velocityY != -1){
         velocityX = 0;
         velocityY = 1; 
-    }else if(e.key === "ArrowLeft"){
+    }else if(e.key === "ArrowLeft" && velocityX != 1){
         velocityX = -1;
         velocityY = 0;    
-    } else if(e.key === "ArrowRight"){
+    } else if(e.key === "ArrowRight" && velocityX != -1){
         velocityX = 1;
         velocityY = 0;     
     }
@@ -66,7 +66,12 @@ const initGame = () =>{
 
     for (let i = 0; i < snakeBody.length; i++) {
         // Adding a div for each part of the snake's body
-        htmlMarkup += `div class="head" style="grid-area: ${snakeY[i][1]} / ${snakeX[i][1]}"></div>`;        
+        htmlMarkup += `div class="head" style="grid-area: ${snakeY[i][1]} / ${snakeX[i][1]}"></div>`; 
+
+        // Checking if the snake head hit the body, if so set gameOver to true
+        if(i !== 0 && snakeBody[0][1] === snakeBody[i][1] &&  snakeBody[0][0] === snakeBody[i][0]){
+            gameOver = true;
+        }       
     }    
     playBoard.innerHTML = htmlMarkup;
 };
