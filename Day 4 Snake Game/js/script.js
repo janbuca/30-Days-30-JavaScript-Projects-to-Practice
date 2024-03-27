@@ -1,4 +1,5 @@
 const playBoard = document.querySelector(".play_board");
+const scoreElement = document.querySelector(".play_board");
 
 let gameOver = false;
 let foodX, foodY;
@@ -6,6 +7,7 @@ let snakeX = 5, snakeY = 10;
 let snakeBody = [];
 let velocityX = 0, velocityY = 0;
 let setIntervalId;
+let score = 0;
 
 const changeFoodPosition = () =>{
     // passing a random 0 - 30 value as a food position
@@ -47,6 +49,9 @@ const initGame = () =>{
     if(snakeX ===  foodX && snakeY === foodY){
         changeFoodPosition();
         snakeBody.push([foodX, foodY]); //pushing food position to snake body array
+        score++; // increment score by 1
+
+        scoreElement.innerText = `Score:${score}`
     }
     for (let i = snakeBody.length - i; i > 0; i--) {
         snakeBody[i] = snakeBody[i-1];   //shifting positions of elements in the snake's body
