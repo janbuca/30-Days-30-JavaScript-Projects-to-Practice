@@ -38,3 +38,6 @@ body{
 .play_board .food{
     background: #ff003d;
 }
+.play_board .head{
+    background: #60cbff;
+}
