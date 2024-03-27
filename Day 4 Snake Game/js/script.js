@@ -39,16 +39,17 @@ const initGame = () =>{
         snakeBody.push([foodX, foodY]); //pushing food position to snake body array
         console.log(snakeBody);
     }
+
+    snakeBody[0] = [snakeX, snakeY]; // setting first element of snake body to current snake position
+
     // updating the snake's head position base on the current velocity
     snakeX += velocityX;
     snakeY += velocityY;
 
     for (let i = 0; i < snakeBody.length; i++) {
         // Adding a div for each part of the snake's body
-        htmlMarkup += `div class="head" style="grid-area: ${snakeY[i][1]} / ${snakeX[i][1]}"></div>`;
-        
-    }
-    htmlMarkup = `<div class = "head" style = "grid-area: ${snakeY} / ${snakeX}"></div>`;
+        htmlMarkup += `div class="head" style="grid-area: ${snakeY[i][1]} / ${snakeX[i][1]}"></div>`;        
+    }    
     playBoard.innerHTML = htmlMarkup;
 };
 changeFoodPosition();
