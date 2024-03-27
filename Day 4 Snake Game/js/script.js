@@ -1,5 +1,6 @@
 const playBoard = document.querySelector(".play_board");
-const scoreElement = document.querySelector(".play_board");
+const scoreElement = document.querySelector(".score");
+const highScoreElement = document.querySelector(".high_score");
 
 let gameOver = false;
 let foodX, foodY;
@@ -54,7 +55,9 @@ const initGame = () =>{
         score++; // increment score by 1
 
         highScore = score >= highScore ?  score : highScore; // Updating High Score
-        scoreElement.innerText = `Score:${score}`
+        localStorage.setItem("high_score", highScore);
+        scoreElement.innerText = `Score: ${score}` ;
+        highScoreElement.innerText = `High Score:${highScore}`
     }
     for (let i = snakeBody.length - i; i > 0; i--) {
         snakeBody[i] = snakeBody[i-1];   //shifting positions of elements in the snake's body
